@@ -13,6 +13,7 @@ const validateAge = require('./middlewares/validateAge');
 const validateKeyTalk = require('./middlewares/validateKeyTalk');
 const editTalker = require('./middlewares/editTalker');
 const deleteTalker = require('./middlewares/deleteTalker');
+const searchTalker = require('./middlewares/searchTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -26,6 +27,8 @@ app.get('/', (_request, response) => {
 });
 
 app.get('/talker', talkerList);
+
+app.get('/talker/search', validateToken, searchTalker);
 
 app.get('/talker/:id', talkerId);
 
